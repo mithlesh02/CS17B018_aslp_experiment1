@@ -1,0 +1,42 @@
+	.file	"lab2_1.c"
+	.intel_syntax noprefix
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	push	rbp                      ; stack[top-0] <-[rbp]
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp                 ;rbp <-[rsp]
+	.cfi_def_cfa_register 6
+	push	r12                       ;stack[top-1] <-[12]
+	push	rbx                       ;stack[top-2] <-[rbx]
+	.cfi_offset 12, -24
+	.cfi_offset 3, -32
+	mov	ebx, 20                   ;ebx <-20
+	mov	r12d, 10                  ;r12d <-10
+	lea	eax, [rbx+r12]             ;rax <- 30
+	mov	DWORD PTR -32[rbp], eax    
+	mov	eax, ebx                  ;eax <-ebx
+	sub	eax, r12d                 ;eax <- r12d; r12d <-10
+	mov	DWORD PTR -28[rbp], eax
+	mov	eax, ebx                  ;eax <- ebx ;ebx <- 20
+	imul	eax, r12d                  ;eax <-r12d*ebx <- 200
+	mov	DWORD PTR -24[rbp], eax
+	mov	eax, ebx                   ;eax <- ebx            
+	cdq
+	idiv	r12d                       ;eax <-eax/r12d <-2
+	mov	DWORD PTR -20[rbp], eax
+	mov	eax, 0
+	pop	rbx
+	pop	r12
+	pop	rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.ident	"GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0"
+	.section	.note.GNU-stack,"",@progbits
