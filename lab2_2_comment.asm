@@ -23,11 +23,11 @@ main:
 	mov	r12d, eax                ;r12d <-eax; r12d <- 5
 	sub	ebx, r12d                ;ebx <-ebx -r12d; ebx <-15
 	mov	eax, 0
-	pop	rbx
-	pop	r12
-	pop	rbp
+	pop	rbx                      ;delete rbx
+	pop	r12                      ;delete r12
+	pop	rbp                      ;delete rbp
 	.cfi_def_cfa 7, 8
-	ret
+	ret                              ;return
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
