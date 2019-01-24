@@ -6,36 +6,36 @@
 main:
 .LFB0:
 	.cfi_startproc
-	push	rbp
+	push	rbp                ;stack[top-0] <- rbp
 	.cfi_def_cfa_offset 16
 	.cfi_offset 6, -16
-	mov	rbp, rsp
+	mov	rbp, rsp           ;rbp<-rsp
 	.cfi_def_cfa_register 6
-	sub	rsp, 64
+	sub	rsp, 64             ;rsp <-[rsp-64]
 	mov	rax, QWORD PTR fs:40
 	mov	QWORD PTR [rbp-8], rax
-	xor	eax, eax
-	mov	DWORD PTR [rbp-48], 4
-	mov	DWORD PTR [rbp-44], 12
-	mov	DWORD PTR [rbp-40], 34
-	mov	DWORD PTR [rbp-36], 51
-	mov	DWORD PTR [rbp-32], 22
-	mov	DWORD PTR [rbp-28], 44
-	mov	DWORD PTR [rbp-24], 11
-	mov	DWORD PTR [rbp-20], 15
-	mov	DWORD PTR [rbp-16], 18
-	mov	DWORD PTR [rbp-12], 19
-	mov	DWORD PTR [rbp-60], 0
-	mov	DWORD PTR [rbp-56], 100000
-	mov	DWORD PTR [rbp-52], 0
-	jmp	.L2
+	xor	eax, eax              ;eax <-eax ^eax
+	mov	DWORD PTR [rbp-48], 4   ;[rbp-48] <- 4
+	mov	DWORD PTR [rbp-44], 12  ;[rbp-44] <- 12
+	mov	DWORD PTR [rbp-40], 34  ;[rbp-40] <- 34
+	mov	DWORD PTR [rbp-36], 51  ;[rbp-36] <- 51
+	mov	DWORD PTR [rbp-32], 22  ;[rbp-32] <- 22
+	mov	DWORD PTR [rbp-28], 44  ;[rbp-28] <- 44
+	mov	DWORD PTR [rbp-24], 11  ;[rbp-24] <- 11
+	mov	DWORD PTR [rbp-20], 15  ;[rbp-20] <- 15
+	mov	DWORD PTR [rbp-16], 18  ;[rbp-16] <- 18
+	mov	DWORD PTR [rbp-12], 19   ;[rbp-12] <- 19
+	mov	DWORD PTR [rbp-60], 0    ;[rbp-60] <- 0
+	mov	DWORD PTR [rbp-56], 100000   ;[rbp-56] <- 100000
+	mov	DWORD PTR [rbp-52], 0       ;[rbp-52] <- 0
+	jmp	.L2                         ;jump to line 2
 .L5:
 	mov	eax, DWORD PTR [rbp-52]
 	cdqe
 	mov	eax, DWORD PTR [rbp-48+rax*4]
-	cmp	eax, DWORD PTR [rbp-60]
-	jle	.L3
-	mov	eax, DWORD PTR [rbp-52]
+	cmp	eax, DWORD PTR [rbp-60]      ;comparing eax and [rbp-52]
+	jle	.L3                          ;jump to line 3 if equql condition satisfy
+	mov	eax, DWORD PTR [rbp-52]      ;[rbp] <- eax
 	cdqe
 	mov	eax, DWORD PTR [rbp-48+rax*4]
 	mov	DWORD PTR [rbp-60], eax
